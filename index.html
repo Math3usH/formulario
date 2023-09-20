@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <style>
+         body{
+            background-color: rgba(44, 43, 43, 0.26);
+        }
+        form{
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 30px;
+            margin-top: 150px;
+            border: 1px black solid;
+            border-radius: 14px;
+            background-color: rgba(0, 153, 255, 0.349);
+        }
+        input{
+            border: 1px;
+            border-radius: 5px;
+            border: none;
+            border-bottom: 2px solid black;
+        }
+        label{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgba(255, 255, 255, 0.637);
+            border-radius: 5px;
+        }
+    </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+
+    <script>
+
+        function click_calcular() {
+            let peso = document.getElementById("txtpeso").value;
+            let altura = document.getElementById("txtaltura").value;
+            if (peso == "") {
+                alert("Informe o valor A");
+            }
+
+            else if (altura == "") {
+                alert("Informe o valor B");
+            }
+            else {
+                let imc = Number(peso) / Number(altura * altura);
+                document.getElementById("txtImc").value = (imc).toFixed(2);
+                if (imc < 18.5) {
+                    document.getElementById("txtclas").value = "Magreza"
+                }
+                else if (imc < 24.9) {
+                   document.getElementById("txtclas").value = "Normal"
+                }
+                else if (imc < 29.9) {
+                    document.getElementById("txtclas").value = "Sobre peso"
+                }
+                else if (imc < 34.9) {
+                    document.getElementById("txtclas").value = "Obesidade grau I"
+                }
+                else if(imc < 39.9){
+                    document.getElementById("txtclas").value = "Obesidade grau II"
+                }
+                else if (imc > 40) {
+                    document.getElementById("txtclas").value = "Obesidade grau III";
+                }
+            }
+
+        }
+
+        function click_limpar() {
+            document.getElementById("txtpeso").value = "";
+            document.getElementById("txtaltura").value = "";
+            document.getElementById("txtImc").value = "";
+
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="txtpeso">Peso</label>
+            <input type="number" name="" id="txtpeso">
+        </div>
+        <br>
+        <div>
+            <label for="txtaltura">altura</label>
+            <input type="number" name="" id="txtaltura">
+        </div>
+        <br>
+        <div>
+            <label for="txtSoma">resultado</label>
+            <input type="number" name="" id="txtImc" disabled>
+        </div>
+        <br>
+        <div>
+            <label for="txtclas">classificação</label>
+            <input type="text" id="txtclas" disabled>
+        </div>
+        <br>
+        <div>
+            <input type="button" value="Calcular IMC" onclick="click_calcular();">
+
+            <input type="button" value="Limpar formulario" onclick="click_limpar();">
+        </div>
+     
+
+    </form>
+
+</body>
+
+</html>
